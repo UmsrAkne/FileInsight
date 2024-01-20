@@ -1,7 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Windows;
 using FileInsight.Models;
+using Prism.Commands;
 using Prism.Mvvm;
 
 namespace FileInsight.ViewModels
@@ -10,10 +12,33 @@ namespace FileInsight.ViewModels
     public class MainWindowViewModel : BindableBase
     {
         private string title = "Prism Application";
+        private ExFileInfo selectedItem;
 
         public string Title { get => title; set => SetProperty(ref title, value); }
 
         public ObservableCollection<ExFileInfo> FileInfos { get; set; } = new ();
+
+        public ExFileInfo SelectedItem { get => selectedItem; set => SetProperty(ref selectedItem, value); }
+
+        public DelegateCommand CopyPathCommand => new (() =>
+        {
+            if (SelectedItem == null)
+            {
+                return;
+            }
+
+            Clipboard.SetText(SelectedItem.FullName);
+        });
+
+        public DelegateCommand CopyNameCommand => new (() =>
+        {
+            if (SelectedItem == null)
+            {
+                return;
+            }
+
+            Clipboard.SetText(SelectedItem.Name);
+        });
 
         public void AddFile(string path)
         {

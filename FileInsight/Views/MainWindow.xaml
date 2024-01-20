@@ -16,6 +16,18 @@
     AllowDrop="True"
     mc:Ignorable="d">
 
+    <Window.InputBindings>
+        <KeyBinding
+            Key="N"
+            Command="{Binding CopyNameCommand}"
+            Modifiers="Control" />
+
+        <KeyBinding
+            Key="P"
+            Command="{Binding CopyPathCommand}"
+            Modifiers="Control" />
+    </Window.InputBindings>
+
     <i:Interaction.Behaviors>
         <models:DragAndDropBehavior />
     </i:Interaction.Behaviors>
@@ -33,7 +45,8 @@
         <ListBox
             Grid.Row="1"
             HorizontalContentAlignment="Stretch"
-            ItemsSource="{Binding FileInfos}">
+            ItemsSource="{Binding FileInfos}"
+            SelectedItem="{Binding SelectedItem}">
             <ListBox.ItemTemplate>
                 <DataTemplate DataType="{x:Type models:ExFileInfo}">
                     <Grid>
