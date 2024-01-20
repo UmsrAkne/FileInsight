@@ -30,6 +30,16 @@ namespace FileInsight.ViewModels
             Clipboard.SetText(SelectedItem.FullName);
         });
 
+        public DelegateCommand CopyNameCommand => new (() =>
+        {
+            if (SelectedItem == null)
+            {
+                return;
+            }
+
+            Clipboard.SetText(SelectedItem.Name);
+        });
+
         public void AddFile(string path)
         {
             var fi = Directory.Exists(path)

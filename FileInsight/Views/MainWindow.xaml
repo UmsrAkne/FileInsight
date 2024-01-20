@@ -18,6 +18,11 @@
 
     <Window.InputBindings>
         <KeyBinding
+            Key="N"
+            Command="{Binding CopyNameCommand}"
+            Modifiers="Control" />
+
+        <KeyBinding
             Key="P"
             Command="{Binding CopyPathCommand}"
             Modifiers="Control" />
