@@ -40,6 +40,10 @@
 
         <Menu Grid.Row="0">
             <MenuItem Header="File" />
+            <MenuItem Header="Copy">
+                <MenuItem Command="{Binding CopyPathCommand}" Header="フルパスをコピー (Ctrl + p)" />
+                <MenuItem Command="{Binding CopyNameCommand}" Header="ファイル名をコピー (Ctrl + n)" />
+            </MenuItem>
         </Menu>
 
         <ListBox
